@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { AdminService } from 'app/services/admin.service';
 
 @Component({
     selector: 'app-navbar',
@@ -9,14 +10,17 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
+    public businessOpen = false;
 
-    constructor(public location: Location, private element : ElementRef) {
+    constructor(public location: Location, private element : ElementRef, public adminService: AdminService) {
         this.sidebarVisible = false;
     }
 
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+
+        this.getBusinessHourOnOff();
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
@@ -71,4 +75,15 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+
+    getBusinessHourOnOff() {
+        this.adminService.getBusinessHourOnOff({}).then (
+          (res) => {
+            this.businessOpen = res[0].is_open;
+    
+          }, rej => {
+           
+          }
+        )
+      }
 }
