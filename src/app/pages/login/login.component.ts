@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           }
 
           if (res[0].role_id == 0) {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/dashboard']);
           }
 
         }, rej => {

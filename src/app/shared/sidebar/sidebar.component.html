@@ -14,11 +14,31 @@
             </a>
         </li>
     </ul>
-    <ul class="side-nav" *ngIf="isLogin">
+    <ul class="side-nav" *ngIf="isLogin && roleId == 1">
         <li class="nav-item">
             <a class="nav-link" routerLink="admin">
                 <i class="material-icons">admin_panel_settings</i>
                 <p>Admin Page</p>
+            </a>
+        </li>
+    </ul>
+    <ul class="side-nav" *ngIf="isLogin && roleId == 0">        
+        <li class="nav-item">
+            <a class="nav-link" routerLink="../dashboard">
+                <i class="material-icons">face</i>
+                <p>Dashboard</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="../booking-order">
+                <i class="material-icons">bookmark_add</i>
+                <p>Booking Order</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="../upload-file">
+                <i class="material-icons">file_upload</i>
+                <p>Upload File</p>
             </a>
         </li>
     </ul>
