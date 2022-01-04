@@ -1,0 +1,62 @@
+<div class="wrapper">    
+    <div class="page-header section-dark" style="background-image: url('assets/img/antoine-barres.jpg')">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+                    <div class="card card-register bg-primary">
+                        <h3 class="title">Welcome</h3>
+                        <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="register-form">
+                            <label for="username">Username</label>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="nc-icon nc-email-85"></i>
+                                    </span>
+                                </div>
+                                <input type="text" name="username" required ngModel #username="ngModel" class="form-control" placeholder="Username" (focus)="focus=true" (blur)="focus=false"
+                                    [ngClass]="{ 'invalid': f.submitted && username.invalid }" />
+                                <div *ngIf="f.submitted && username.errors" class="invalid-feedback">
+                                    <div *ngIf="username.errors.required">Username is required</div>
+                                </div>
+                            </div>
+
+                            <label for="password">Password</label>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="nc-icon nc-key-25"></i>
+                                    </span>
+                                </div>
+                                <input type="password" name="password" required ngModel #password="ngModel" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false"
+                                    [ngClass]="{ 'invalid': f.submitted && password.invalid }" />
+                                <div *ngIf="f.submitted && password.errors" class="invalid-feedback">
+                                    <div *ngIf="password.errors.required">Password is required</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-neutral btn-block btn-round">Login</button>                            
+                        </form>
+                        <div class="forgot">
+                            <a [routerLink]="['/signup']" class="btn btn-link btn-neutral">Are you new user? Sign up here!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="main">
+      <div class="section">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-6">
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div> -->
+    <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(./assets/img/sidebar-4.jpg)"></div>
+    </div>
+</div>

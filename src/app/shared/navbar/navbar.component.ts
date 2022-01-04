@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AdminService } from 'app/services/admin.service';
+import { AccountService } from 'app/services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-navbar',
@@ -12,8 +14,26 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
     public businessOpen = false;
 
-    constructor(public location: Location, private element : ElementRef, public adminService: AdminService) {
+    public isLogin = false;
+    public roleId = 0;
+
+
+    constructor(
+        public location: Location, 
+        private element : ElementRef, 
+        public accountService: AccountService, 
+        public router: Router,
+        public adminService: AdminService) {
+            
         this.sidebarVisible = false;
+
+        this.isLogin = accountService.isLoggedIn;
+        this.roleId = accountService.roleId;
+
+        this.accountService.refreshObservable.subscribe(() => {
+        this.isLogin = this.accountService.isLoggedIn;
+        this.roleId - this.accountService.roleId;
+        })
     }
 
     ngOnInit() {
@@ -52,11 +72,14 @@ export class NavbarComponent implements OnInit {
         }
     };
     isHome() {
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
-          titlee = titlee.slice( 1 );
-      }
+        var titlee = this.location.prepareExternalUrl(this.location.path());
+        if(titlee.charAt(0) === '#'){
+            titlee = titlee.slice( 1 );
+        }
         if( titlee === '/home' ) {
+            return true;
+        }
+        else if (titlee == '') {
             return true;
         }
         else {
@@ -78,12 +101,21 @@ export class NavbarComponent implements OnInit {
 
     getBusinessHourOnOff() {
         this.adminService.getBusinessHourOnOff({}).then (
-          (res) => {
+            (res) => {
             this.businessOpen = res[0].is_open;
-    
-          }, rej => {
-           
-          }
+
+            }, rej => {
+            
+            }
         )
-      }
+    }
+
+    logout() {
+        this.accountService.logout().then(
+            () => {
+            this.isLogin = this.accountService.isLoggedIn;
+            this.router.navigate(['/']);
+            }
+        )
+    }
 }

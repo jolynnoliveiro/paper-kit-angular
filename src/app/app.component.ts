@@ -5,6 +5,7 @@ import 'rxjs/add/operator/filter';
 import { DOCUMENT } from '@angular/common';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { AccountService } from './services/account.service';
 
 @Component({
     selector: 'app-root',
@@ -14,8 +15,26 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 export class AppComponent implements OnInit {
     private _router: Subscription;
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
+    
+    public isLogin = false;
+    public roleId = 0;
 
-    constructor( private renderer : Renderer2, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location) {}
+    constructor( 
+        private renderer : Renderer2, 
+        private router: Router, 
+        @Inject(DOCUMENT,) private document: any, 
+        private element : ElementRef, 
+        public location: Location, 
+        public accountService: AccountService) {
+            this.isLogin = accountService.isLoggedIn;
+            this.roleId = accountService.roleId;
+        
+            this.accountService.refreshObservable.subscribe(() => {
+              this.isLogin = this.accountService.isLoggedIn;
+              this.roleId - this.accountService.roleId;
+            });
+        }
+        
     ngOnInit() {
         var navbar : HTMLElement = this.element.nativeElement.children[0].children[0];
         this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
@@ -28,13 +47,13 @@ export class AppComponent implements OnInit {
         });
         this.renderer.listen('window', 'scroll', (event) => {
             const number = window.scrollY;
-            if (number > 150 || window.pageYOffset > 150) {
+            /* if (number > 150 || window.pageYOffset > 150) {
                 // add logic
                 navbar.classList.remove('navbar-transparent');
             } else {
                 // remove logic
                 navbar.classList.add('navbar-transparent');
-            }
+            } */
         });
         var ua = window.navigator.userAgent;
         var trident = ua.indexOf('Trident/');
@@ -59,5 +78,15 @@ export class AppComponent implements OnInit {
         else {
             return true;
         }
+    }
+
+    
+    logout() {
+        this.accountService.logout().then(
+            () => {
+            this.isLogin = this.accountService.isLoggedIn;
+            this.router.navigate(['/']);
+            }
+        )
     }
 }
