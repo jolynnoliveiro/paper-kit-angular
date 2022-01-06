@@ -46,8 +46,8 @@
                     <div ngbDropdown class="dropdown" placement="bottom-left">
                         <mat-icon ngbDropdownToggle style="color: #111; top: 20px; left: 10px;" matBadge="1" id="dropdownBasic1" matBadgeColor="warn">notifications</mat-icon>
                         <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-danger dropdown-menu-right">
-                            <a class="dropdown-item">Action - 1</a>
-                            <a class="dropdown-item">Action - 2</a>
+                            <a class="dropdown-item" *ngIf="isLogin && roleId == 1" routerLink="admin">Admin Page</a>
+                            <a class="dropdown-item" *ngIf="isLogin && roleId == 0" routerLink="admin">Dashboard</a>
                             <div class="dropdown-divider"></div>
                             <a [routerLink]="['/components']" class="dropdown-item">Documentation</a>
                         </div>

@@ -1,26 +1,129 @@
 <div class="wrapper">    
     <div class="page-header section-dark" style="background-image: url('assets/img/ariel-view.jpg')">
         <div class="filter"></div>
+        <div class="content-center">
+            <div class="container">
+                <div class="title-brand">
+                    <h1>Welcome to Aimst Printing Service</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mr-auto ml-auto">
+                        <h2 class="title">Let's talk product</h2>
+                        <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.</h5>
+                        <br>
+                        <a href="#paper-kit" class="btn btn-danger btn-round">Sign Up Here!</a>
+                    </div>
+                </div>
+                <br/><br/>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-danger">
+                                <i class="nc-icon nc-album-2"></i>
+                            </div>
+                            <div class="description">
+                                <h4 class="info-title">Beautiful Gallery</h4>
+                                <p class="description">Spend your time generating new ideas. You don't have to think of implementing.</p>
+                                <a href="#pkp" class="btn btn-link btn-danger">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-danger">
+                                <i class="nc-icon nc-bulb-63"></i>
+                            </div>
+                            <div class="description">
+                                <h4 class="info-title">New Ideas</h4>
+                                <p>Larger, yet dramatically thinner. More powerful, but remarkably power efficient.</p>
+                                <a href="#pkp" class="btn btn-link btn-danger">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-danger">
+                                <i class="nc-icon nc-sun-fog-29"></i>
+                            </div>
+                            <div class="description">
+                                <h4 class="info-title">Delightful design</h4>
+                                <p>Find unique and handmade delightful designs related items directly from our sellers.</p>
+                                <a href="#pkp" class="btn btn-link btn-danger">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>    
+    </div>
+    <div class="section section-dark text-center">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
-                    <div class="card card-register bg-primary">
-                        <h3 class="title">Home</h3>
-                        
+                <div class="col-md-6">
+                    <div class="info">
+                        <div class="icon icon-primary">
+                            <i class="nc-icon nc-album-2"></i>
+                        </div>
+                        <div class="description">
+                            <h4 class="info-title">Good Quality Printing</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info">
+                        <div class="icon icon-primary">
+                            <i class="nc-icon nc-user-run"></i>
+                        </div>
+                        <div class="description">
+                            <h4 class="info-title">Excellent Service</h4>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div class="main">
-      <div class="section">
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-6">
-                      
-                  </div>
-              </div>
-          </div>
-      </div>
-    </div> -->
+    <div class="section landing-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mr-auto ml-auto">
+                    <h2 class="text-center">Contact Us</h2>
+                    <form class="contact-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Name</label>
+                                <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Name" (focus)="focus=true" (blur)="focus=false" >
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Email</label>
+                                <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">  <i class="nc-icon nc-email-85"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Email" (focus)="focus1=true" (blur)="focus1=false" >
+                                </div>
+                            </div>
+                        </div>
+                        <label>Message</label>
+                        <textarea class="form-control" rows="4" placeholder="Your message..."></textarea>
+                        <div class="row">
+                            <div class="col-md-4 mr-auto ml-auto">
+                                <button class="btn btn-danger btn-lg btn-fill">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
