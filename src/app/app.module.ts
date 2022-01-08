@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateAdapter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 
@@ -67,7 +67,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { HomeComponent } from './pages/home/home.component';
-import { BookingOrderComponent } from './pages/booking-order/booking-order.component';
+import { BookingOrderComponent, CustomAdapter } from './pages/booking-order/booking-order.component';
 import { UploadFileComponent } from './pages/upload-file/upload-file.component';
 
 
@@ -180,6 +180,7 @@ import { UploadFileComponent } from './pages/upload-file/upload-file.component';
     HttpService,
     TestService,
     NavbarComponent,
+    {provide: NgbDateAdapter, useClass: CustomAdapter},
   ],
   bootstrap: [AppComponent]
 })

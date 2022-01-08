@@ -34,7 +34,7 @@ export class SidebarComponent implements OnInit {
   
       this.accountService.refreshObservable.subscribe(() => {
         this.isLogin = this.accountService.isLoggedIn;
-        this.roleId - this.accountService.roleId;
+        this.roleId = this.accountService.roleId;
       });
     }
 

@@ -57,3 +57,30 @@
 
 // side-nav
 @import "paper-kit/side-nav";
+
+ngb-datepicker {
+    
+    background-color: white;
+    position: inherit !important;
+
+    .ngb-dp-day {
+        width: 3rem;
+        height: 3rem;
+        line-height: 3rem;
+        text-align: center;
+    }
+
+    .ngb-dp-weekday {
+        width: 3rem;
+        text-align: center;
+    }
+
+    .ngb-dp-header {
+        background-color: rgba(52,104,191,1);
+    }
+
+    select {
+        background-color: rgba(52,104,191,1);
+        color: white;
+    }
+}

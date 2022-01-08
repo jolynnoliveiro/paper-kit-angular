@@ -3,6 +3,8 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { AdminService } from 'app/services/admin.service';
 import { AccountService } from 'app/services/account.service';
 import { Router } from '@angular/router';
+import { NotificationService } from 'app/services/notification.service';
+import { Notifications } from 'app/models/notifications';
 
 @Component({
     selector: 'app-navbar',
@@ -17,13 +19,15 @@ export class NavbarComponent implements OnInit {
     public isLogin = false;
     public roleId = 0;
 
+    public notificationCount = 0;
 
     constructor(
         public location: Location, 
         private element : ElementRef, 
         public accountService: AccountService, 
         public router: Router,
-        public adminService: AdminService) {
+        public adminService: AdminService,
+        public notificationService: NotificationService) {
             
         this.sidebarVisible = false;
 
@@ -31,8 +35,8 @@ export class NavbarComponent implements OnInit {
         this.roleId = accountService.roleId;
 
         this.accountService.refreshObservable.subscribe(() => {
-        this.isLogin = this.accountService.isLoggedIn;
-        this.roleId - this.accountService.roleId;
+            this.isLogin = this.accountService.isLoggedIn;
+            this.roleId = this.accountService.roleId;
         })
     }
 
@@ -41,6 +45,7 @@ export class NavbarComponent implements OnInit {
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
 
         this.getBusinessHourOnOff();
+        this.getNotifications();
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
@@ -102,7 +107,20 @@ export class NavbarComponent implements OnInit {
         this.accountService.logout().then(
             () => {
             this.isLogin = this.accountService.isLoggedIn;
+            this.notificationCount = 0;
             this.router.navigate(['/']);
+            }
+        )
+    }
+
+    getNotifications() {
+        
+        const obj = Object.assign({});
+        obj.userId = this.accountService.currentUser.id;
+
+        this.notificationService.getNotification(obj).then(
+            (res) => {
+                this.notificationCount = res.length;
             }
         )
     }

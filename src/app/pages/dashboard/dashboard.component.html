@@ -1,12 +1,91 @@
 <div class="wrapper">    
     <div class="page-header section-dark" style="background-image: url('assets/img/ariel-view.jpg')">
-        <div class="filter"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
-                    <div class="card card-register bg-primary">
-                        <h3 class="title">Welcome {{username}}</h3>
-                        
+        <div class="main">
+            <div class="section-white section-container p-5 rounded">
+                <h2 class="text-primary pb-5">Dashboard</h2>
+                <div class="container">
+                    <h4 class="text-primary">Upload Files</h4>
+                    <div class="row table-container">
+                        <div class="col-md-12">
+                            <div class="content-center text-center">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Paper Type</th>
+                                            <th scope="col">Colored</th>
+                                            <th scope="col">Binding</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">File Path</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let record of uploadRecords">
+                                            <th scope="row">{{ record.id }}</th>
+                                            <td>{{ record.paper_type }}</td>
+                                            <td>{{ record.colored == 1 ? "Colored" : "Black & White" }}</td>
+                                            <td>{{ record.binding == 1 ? "Yes" : "No" }}</td>
+                                            <td>{{ record.status }}</td>
+                                            <td>{{ record.price }}</td>
+                                            <td>
+                                                <a href="javascript:void(0)" (click)="onDownloadClick(record.file_path)">Click to view the file</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- <div class="d-flex justify-content-between p-2">
+                                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+                                    </ngb-pagination>
+                                  
+                                    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+                                      <option [ngValue]="2">2 items per page</option>
+                                      <option [ngValue]="4">4 items per page</option>
+                                      <option [ngValue]="6">6 items per page</option>
+                                    </select>
+                                  </div>     -->                                                          
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <h4 class="text-primary">Booking</h4>
+                    <div class="row table-container">
+                        <div class="col-md-12">
+                            <div class="content-center text-center">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Start Time</th>
+                                            <th scope="col">End Time</th>
+                                            <th scope="col">Booking Date</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let order of bookedOrders">
+                                            <th scope="row">{{ order.booking_id }}</th>
+                                            <td>{{ order.start_time }}</td>
+                                            <td>{{ order.end_time }}</td>
+                                            <td>{{ order.booking_date }}</td>
+                                            <td>
+                                                <button class="btn btn-danger btn-sm" (click)="onDeleteBookingDate()">Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- <div class="d-flex justify-content-between p-2">
+                                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+                                    </ngb-pagination>
+                                  
+                                    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+                                      <option [ngValue]="2">2 items per page</option>
+                                      <option [ngValue]="4">4 items per page</option>
+                                      <option [ngValue]="6">6 items per page</option>
+                                    </select>
+                                  </div>     -->                                                          
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -16,8 +95,9 @@
       <div class="section">
           <div class="container">
               <div class="row">
-                  <div class="col-md-6">
-                      
+                  <div class="col-md-12">
+                    <div class="content-center text-center">
+                    </div>
                   </div>
               </div>
           </div>
@@ -25,6 +105,5 @@
     </div> -->
     <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
         <app-sidebar></app-sidebar>
-        <div class="sidebar-background" style="background-image: url(./assets/img/sidebar-4.jpg)"></div>
     </div>
 </div>

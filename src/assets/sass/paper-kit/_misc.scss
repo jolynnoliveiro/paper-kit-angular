@@ -102,6 +102,10 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
     font-weight: $font-weight-bold;
 }
 
+.bg-white{
+    @include navbar-color($bg-nude !important);
+}
+
 .bg-primary{
     @include navbar-color($bg-primary !important);
 }

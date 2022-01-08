@@ -68,18 +68,6 @@ export class AdminService {
     })
   }
 
-  getNotification(data: any): Promise<any> {
-    return new Promise((resolve, reject) => {
-      const url = 'http://localhost:3000/api/getNotification';
-      this.myHttp.postData(url, data)
-      .subscribe((res: any) => {
-        resolve(res);
-      }, (error) => {
-        reject(error);
-      })
-    })
-  }
-
  createOrder(data: any): Promise<any> {
     return new Promise((resolve, reject) => {
       const url = 'http://localhost:3000/api/createOrder';

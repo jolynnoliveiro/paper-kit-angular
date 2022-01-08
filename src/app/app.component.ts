@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
         
             this.accountService.refreshObservable.subscribe(() => {
               this.isLogin = this.accountService.isLoggedIn;
-              this.roleId - this.accountService.roleId;
+              this.roleId = this.accountService.roleId;
             });
         }
         
@@ -78,15 +78,5 @@ export class AppComponent implements OnInit {
         else {
             return true;
         }
-    }
-
-    
-    logout() {
-        this.accountService.logout().then(
-            () => {
-            this.isLogin = this.accountService.isLoggedIn;
-            this.router.navigate(['/']);
-            }
-        )
     }
 }
