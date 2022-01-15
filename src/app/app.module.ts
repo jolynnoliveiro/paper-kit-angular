@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbDateAdapter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
@@ -93,12 +93,9 @@ import { UploadFileComponent } from './pages/upload-file/upload-file.component';
     ComponentsModule,
     ExamplesModule,
     AppRoutingModule,
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     NoopAnimationsModule,
+    ReactiveFormsModule,
 
     
     MatAutocompleteModule,

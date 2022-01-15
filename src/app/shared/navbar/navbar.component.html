@@ -19,10 +19,13 @@
                 <li class="nav-item">                    
                     <p class="btn btn-link btn-default">{{businessOpen ? "SHOP IS OPEN" : "SHOP IS CLOSED"}}</p>
                 </li>
-                <li class="nav-item" *ngIf="isHome() && !isLogin">
-                    <a [routerLink]="['/login']" class="btn btn-primary btn-round">Signup / Login</a>
+                <li class="nav-item" *ngIf="!isLogin">
+                    <a [routerLink]="['/signup']" class="btn btn-primary btn-round">Sign Up</a>
                 </li>
-                <li class="nav-item" *ngIf="!isHome()">
+                <li class="nav-item" *ngIf="!isLogin">
+                    <a [routerLink]="['/login']" class="btn btn-primary btn-round">Login</a>
+                </li>
+                <li class="nav-item">
                     <a [routerLink]="['/']" class="btn btn-primary btn-round">Home</a>
                 </li>
                 <li class="nav-item" *ngIf="isLogin">

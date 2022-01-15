@@ -1,5 +1,6 @@
+<app-navbar></app-navbar>
 <div class="wrapper">
-    <div class="page-header" style="background-image: url('./assets/img/login-image.jpg');">
+    <div class="page-header section-dark" style="background-image: url('assets/img/ariel-view.jpg')">
         <div class="filter">
 
         </div>
@@ -8,7 +9,7 @@
                 <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
                     <div class="card card-register">
                         <h3 class="title">Welcome</h3>
-                        <form class="register-form">
+                        <form class="register-form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
                             <label>Username</label>
                             <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                             <div class="input-group-prepend">
@@ -16,8 +17,7 @@
                                     <i class="nc-icon nc-email-85"></i>
                                 </span>
                             </div>
-
-                                <input type="text" class="form-control" placeholder="Username" (focus)="focus=true" (blur)="focus=false" >
+                                <input type="text" id="username" required name="Username" class="validate" formControlName="Username" class="form-control" placeholder="Username" (focus)="focus=true" (blur)="focus=false" >
                             </div>
 
                             <label>Password</label>
@@ -27,9 +27,19 @@
                                     <i class="nc-icon nc-key-25"></i>
                                 </span>
                             </div>
-                                <input type="password" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" >
+                                <input type="password" id="password" required name="Password" class="validate" formControlName="Password" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" >
                             </div>
-                            <button class="btn btn-danger btn-block btn-round">Register</button>
+
+                            <label>Contact No</label>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus2===true}">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="nc-icon nc-mobile"></i>
+                                </span>
+                            </div>
+                                <input type="text" id="contact" required name="Contact" class="validate" formControlName="Contact" class="form-control" placeholder="0123456789" (focus)="focus2=true" (blur)="focus2=false" >
+                            </div>
+                            <button class="btn btn-danger btn-block btn-round" type="Submit">Register</button>
                         </form>
                         <div class="forgot">
                             <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
@@ -41,8 +51,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
-        <app-sidebar></app-sidebar>
     </div>
 </div>

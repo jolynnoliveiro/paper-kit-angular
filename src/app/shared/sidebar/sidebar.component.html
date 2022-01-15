@@ -29,16 +29,24 @@
                 <p>Dashboard</p>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isLogin && roleId == 0">
             <a class="nav-link" routerLink="../booking-order">
                 <i class="material-icons">bookmark_add</i>
                 <p>Booking Order</p>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isLogin && roleId == 0">
             <a class="nav-link" routerLink="../upload-file">
                 <i class="material-icons">file_upload</i>
                 <p>Upload File</p>
+            </a>
+        </li>
+    </ul>
+    <ul class="side-nav">
+        <li class="nav-item" >
+            <a class="nav-link" routerLink="/">
+                <i class="material-icons">home</i>
+                <p>Home</p>
             </a>
         </li>
     </ul>

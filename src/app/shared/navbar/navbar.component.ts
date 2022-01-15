@@ -78,9 +78,7 @@ export class NavbarComponent implements OnInit {
     };
     isHome() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
-        if(titlee.charAt(0) === '#'){
-            titlee = titlee.slice( 1 );
-        }
+        
         if( titlee === '/home' ) {
             return true;
         }
