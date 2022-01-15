@@ -3,25 +3,105 @@
         <div class="main">
             <div class="section px-5 rounded">
                 <div class="container">
+                    <div class="tim-title">
+                        <h3>Upload File</h3>
+                        <br/>
+                        <p>Your Description</p>
+                        <br/>
+                        <div class="footer">
+                            <hr/>    
+                        </div>
+                        <br/>                        
+                    </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="content-center text-center">
-                               
+                        <div class="col-sm-6">
+                            <label id="example-radio-group-label">Upload your file</label>  
+                            <div class="form-group">
+                                <input #uploadFile type="file" id="uploadFile" accept="application/pdf" (change)="onFileSelected($event)" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label id="example-radio-group-label">Choose your paper type</label>  
+                            <div class="form-group">
+                                <mat-radio-group
+                                aria-labelledby="example-radio-group-label"
+                                class="example-radio-group"
+                                [(ngModel)]="selectedPaperType">
+                                <mat-radio-button class="example-radio-button" *ngFor="let paperType of paperTypes" [value]="paperType"
+                                    (change)="onSelectPaperType($event)">
+                                    {{paperType}}
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label id="example-radio-group-label">Choose your ink color</label>
+                            <div class="form-group">
+                                <mat-radio-group
+                                aria-labelledby="example-radio-group-label"
+                                class="example-radio-group"
+                                [(ngModel)]="selectedInkType">
+                                <mat-radio-button class="example-radio-button" *ngFor="let inkType of inkTypes" [value]="inkType" 
+                                    (change)="onSelectInkType($event)">
+                                    {{inkType}}
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label id="example-radio-group-label">Binding Type</label>
+                            <div class="form-group">
+                                <mat-radio-group
+                                aria-labelledby="example-radio-group-label"
+                                class="example-radio-group"
+                                [(ngModel)]="selectedBindingType">
+                                <mat-radio-button class="example-radio-button" *ngFor="let bindingType of bindingTypes" [value]="bindingType" 
+                                (change)="onSelectBindingType($event)">
+                                    {{bindingType}}
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label id="example-radio-group-label">Cover Type</label>
+                            <div class="form-group">
+                                <mat-radio-group
+                                aria-labelledby="example-radio-group-label"
+                                class="example-radio-group"
+                                [(ngModel)]="selectedCoverType">
+                                <mat-radio-button class="example-radio-button" *ngFor="let coverType of coverTypes" [value]="coverType" 
+                                (change)="onSelectCoverType($event)">
+                                    {{coverType}}
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label id="example-radio-group-label">Front Only or Front & Back</label>
+                            <div class="form-group">
+                                <mat-radio-group
+                                aria-labelledby="example-radio-group-label"
+                                class="example-radio-group"
+                                [(ngModel)]="selectedPaperFrontBackType">
+                                <mat-radio-button class="example-radio-button" *ngFor="let paperFrontBackType of paperFrontBackTypes" 
+                                [value]="paperFrontBackType" 
+                                (change)="onSelectFrontBack($event)">
+                                    {{paperFrontBackType}}
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">                            
+                            <label>Remarks (Optional)</label>
+                            <div class="form-group">
+                                <input matInput [(ngModel)]="message" maxlength="200" placeholder="Add your remarks">
+                                <mat-hint align="end">{{message.length}} / 200</mat-hint>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="content-center text-center">
-                            </div>
-                        </div>
-                    </div>
-                    <hr/>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="content-center text-center">
-                                
-                            </div>
+                    <div class="row float-right">
+                        <div class="col-sm-12">
+                            <button class="btn btn-danger" (click)="onUpload()">Upload</button>
                         </div>
                     </div>
                 </div>
