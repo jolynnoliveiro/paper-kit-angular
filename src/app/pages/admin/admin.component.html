@@ -1,28 +1,89 @@
 <div class="wrapper">    
     <div class="page-header section-dark" style="background-image: url('assets/img/ariel-view.jpg')">
-        <div class="filter"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
-                    <div class="card card-register bg-primary">
-                        <h3 class="title">Welcome {{username}}</h3>
-                        
+        <div class="main">
+            <div class="section-white section-container p-5 rounded">
+                <div class="tim-title">
+                    <h3>Admin Page</h3>
+                    <br/>
+                    <p>Your Description</p>
+                    <br/>
+                    <div class="footer">
+                        <hr/>    
+                    </div>
+                    <br/> 
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>File Upload</h4>
+                            <div class="table-container content-center text-center">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Paper Type</th>
+                                            <th scope="col">Colored</th>
+                                            <th scope="col">Binding</th>
+                                            <th scope="col">Upload Date</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Contact Number</th>
+                                            <th scope="col">File Path</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let record of uploadRecords">
+                                            <th scope="row">{{ record.id }}</th>
+                                            <td>{{ record.paper_type }}</td>
+                                            <td>{{ record.colored == 1 ? "Colored" : "Black & White" }}</td>
+                                            <td>{{ record.binding == 1 ? "Yes" : "No" }}</td>
+                                            <td>{{ record.created_datetime }}</td>
+                                            <td>{{ record.status }}</td>
+                                            <td>{{ record.price }}</td>
+                                            <td>{{ record.username }}</td>
+                                            <td>{{ record.contact_number }}</td>
+                                            <td>
+                                                <a href="javascript:void(0)" (click)="onDownloadClick(record.file_path)">Click to view the file</a>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm" (click)="onCreateOrderClick(element.id, element.paper_type, element.colored, element.binding)">Create</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                              </div>
+                        </div>
+                        <div class="col-md-12">
+                            <h4>Booking Orders</h4>
+                            <div class="table-container">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Start Time</th>
+                                            <th scope="col">End Time</th>
+                                            <th scope="col">Booking Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let order of bookedOrders">
+                                            <th scope="row">{{ order.booking_id }}</th>
+                                            <td>{{ order.start_time }}</td>
+                                            <td>{{ order.end_time }}</td>
+                                            <td>{{ order.booking_date }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div class="main">
-      <div class="section">
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-6">
-                      
-                  </div>
-              </div>
-          </div>
-      </div>
-    </div> -->
     <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
         <app-sidebar></app-sidebar>
     </div>
