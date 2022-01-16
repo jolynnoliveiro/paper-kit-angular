@@ -1,47 +1,48 @@
 <div class="wrapper">    
-    <div class="page-header section-dark" style="background-image: url('assets/img/ariel-view.jpg')">
-        <div class="main">
-            <div class="section px-5 rounded">
-                <div class="container">
-                    <div class="tim-title">
-                        <h3>Booking Order</h3>
-                        <br/>
-                        <p>Your Description</p>
-                        <br/>
-                        <div class="footer">
-                            <hr/>    
+    <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="main-panel">
+        <div class="content">            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header ">
+                            <h5 class="card-title">Booking Order</h5>
+                            <p class="card-category">Your Description</p>
                         </div>
-                        <br/> 
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="content-center text-center">
-                                <ngb-datepicker #dp [(ngModel)]="model1" #c1="ngModel"></ngb-datepicker>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="content-center text-center">
+                                        <ngb-datepicker #dp datepicker-append-to-body="true" [(ngModel)]="model1" #c1="ngModel"></ngb-datepicker>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="content-center text-center">
-                                <!-- <p>Selected Date: {{model1 | json}}</p> -->
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="content-center text-center">
+                                        <!-- <p>Selected Date: {{model1 | json}}</p> -->
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <hr/>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="content-center text-center">
-                                <!-- <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectToday()">Select Today</button> -->
-                                <button class="btn btn-sm btn-success mr-2" *ngIf="model1" (click)="triggerModal(modalData)">Confirm Booking?</button>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="content-center text-center">
+                                        <!-- <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectToday()">Select Today</button> -->
+                                        <button class="btn btn-sm btn-success mr-2" *ngIf="model1" (click)="triggerModal(modalData)">Confirm Booking?</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>        
-    </div>
-    <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
-        <app-sidebar></app-sidebar>
+            <div class="row" style="margin-bottom: 270px">
+                
+            </div>
+        </div>
     </div>
 </div>
 

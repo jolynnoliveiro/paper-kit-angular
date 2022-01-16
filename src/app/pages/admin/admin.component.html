@@ -1,22 +1,45 @@
-<div class="wrapper">    
-    <div class="page-header section-dark" style="background-image: url('assets/img/ariel-view.jpg')">
-        <div class="main">
-            <div class="section-white section-container p-5 rounded">
-                <div class="tim-title">
-                    <h3>Admin Page</h3>
-                    <br/>
-                    <p>Your Description</p>
-                    <br/>
-                    <div class="footer">
-                        <hr/>    
+<div class="wrapper">
+    <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="main-panel">
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-5 col-md-4">
+                                    <div class="icon-big text-center icon-warning">
+                                    <i class="nc-icon nc-globe text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="col-7 col-md-8">
+                                    <div class="numbers">
+                                    <p class="card-category">Capacity</p>
+                                    <p class="card-title">150GB
+                                        <p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer ">
+                            <hr>
+                            <div class="stats">
+                            <i class="fa fa-refresh"></i> Update Now
+                            </div>
+                        </div>
                     </div>
-                    <br/> 
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>File Upload</h4>
-                            <div class="table-container content-center text-center">
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header ">
+                        <h5 class="card-title">Upload Files</h5>
+                        </div>
+                        <div class="card-body table-container">
+                            <div class="content-center text-center">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
@@ -52,13 +75,20 @@
                                             </td>
                                         </tr>
                                     </tbody>
-                                </table>
-                                
-                              </div>
+                                </table>                                
+                            </div>
                         </div>
-                        <div class="col-md-12">
-                            <h4>Booking Orders</h4>
-                            <div class="table-container">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header ">
+                        <h5 class="card-title">Booking Orders</h5>
+                        </div>
+                        <div class="card-body table-container">
+                            <div class="content-center text-center">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
@@ -76,15 +106,12 @@
                                             <td>{{ order.booking_date }}</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table>                                                 
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
         </div>
-    </div>
-    <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
-        <app-sidebar></app-sidebar>
     </div>
 </div>
