@@ -13,6 +13,7 @@ import { AdminService } from 'app/services/admin.service';
 export class DashboardComponent implements OnInit {
 
   public username = "";
+  public contactNo = "";
 
   page = 1;
   pageSize = 4;
@@ -30,6 +31,9 @@ export class DashboardComponent implements OnInit {
     this.getUploadRecordsByUserId();
 
     this.getBookedOrdersByUserId();
+
+    this.username = this.accountService.currentUser.username;
+    this.contactNo = this.accountService.currentUser.contact_number;
   }
 
   refreshCountries() {
