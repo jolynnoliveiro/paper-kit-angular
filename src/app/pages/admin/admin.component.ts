@@ -142,11 +142,9 @@ export class AdminComponent implements OnInit {
   getUsers() {
     this.adminService.getUsers([]).then(
       (res) => {
-        console.log(res);
         this.users = res;
 
       }, rej => {
-        console.log(rej);
         this.snackBar.open(rej.error, '', {
           duration: 2000, //2000 ms = 2 seconds
         })
