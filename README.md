@@ -11,7 +11,7 @@
 <br/>
 
 ### Additional Requirement
-1. Admin Page
+1. Admin Page :white_check_mark:
    - List of Created users (User Info)
      - Username
      - Full Name
