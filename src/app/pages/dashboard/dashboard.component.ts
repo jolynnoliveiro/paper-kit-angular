@@ -100,4 +100,17 @@ export class DashboardComponent implements OnInit {
     
   }
 
+  getCover(data: number ): String {
+    var value = "No Cover";
+    
+    if (data == 1) {
+      value = "Transparent Hard Plastic Cover";
+    }
+
+    if (data == 2) {
+      value = "Hard Cover";
+    }
+
+    return value;
+  }
 }

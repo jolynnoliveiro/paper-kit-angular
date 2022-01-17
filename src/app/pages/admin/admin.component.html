@@ -78,6 +78,8 @@
                                             <th scope="col">Paper Type</th>
                                             <th scope="col">Colored</th>
                                             <th scope="col">Binding</th>
+                                            <th scope="col">Paper Front / Back</th>
+                                            <th scope="col">Cover Type</th>
                                             <th scope="col">Upload Date</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Price</th>
@@ -93,6 +95,8 @@
                                             <td>{{ record.paper_type }}</td>
                                             <td>{{ record.colored == 1 ? "Colored" : "Black & White" }}</td>
                                             <td>{{ record.binding == 1 ? "Yes" : "No" }}</td>
+                                            <td>{{ record.paper_front_back == 0 ? "Front Only" : "Front & Back" }}</td>
+                                            <td>{{ getCover(record.cover_type) }}</td>
                                             <td>{{ record.upload_datetime }}</td>
                                             <td>{{ record.status }}</td>
                                             <td>{{ record.price }}</td>
