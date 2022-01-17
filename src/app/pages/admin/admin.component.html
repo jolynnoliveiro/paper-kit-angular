@@ -31,6 +31,37 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header ">
+                        <h5 class="card-title">List of Users</h5>
+                        </div>
+                        <div class="card-body table-container">
+                            <div class="content-center text-center">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Contact Number</th>
+                                            <th scope="col">Sign Up Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let record of users">
+                                            <td>{{ record.username }}</td>
+                                            <td>{{ record.contact_number }}</td>
+                                            <td>{{ record.signup_date }}</td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>                                                     
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card ">

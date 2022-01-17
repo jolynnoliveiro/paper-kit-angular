@@ -106,4 +106,16 @@ export class AdminService {
     })
   }
 
+  getUsers(data: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const url = 'http://localhost:3000/api/getUsers';
+      this.myHttp.getData(url, data)
+      .subscribe((res: any) => {
+        resolve(res);
+      }, (error) => {
+        reject(error);
+      })
+    })
+  }
+
 }
