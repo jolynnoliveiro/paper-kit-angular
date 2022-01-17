@@ -48,7 +48,7 @@ export class SignupComponent implements OnInit {
           })
 
           this.accountService.refreshSubject?.next(true);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
 
         }, rej => {
           this.snackBar.open(rej.error, '', {
