@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AccountService } from 'app/services/account.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from 'app/services/admin.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -22,8 +23,11 @@ export class DashboardComponent implements OnInit {
   uploadRecords = [];
 
   bookedOrders = [];
+  model1: string;
 
-  constructor(public adminService: AdminService, public accountService: AccountService, public snackBar: MatSnackBar) { }
+  recordDetails = {};
+
+  constructor(public adminService: AdminService, public accountService: AccountService, public snackBar: MatSnackBar, public modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.refreshCountries();
@@ -112,5 +116,11 @@ export class DashboardComponent implements OnInit {
     }
 
     return value;
+  }
+  
+  onViewDetails(modalData: any, record: any) {
+    this.recordDetails = record;
+
+    this.modalService.open(modalData, {ariaLabelledBy: 'modal-basic-title'});
   }
 }

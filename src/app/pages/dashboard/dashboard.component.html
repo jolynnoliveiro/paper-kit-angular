@@ -2,7 +2,7 @@
     <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
         <app-sidebar></app-sidebar>
     </div>
-    <div class="main-panel" style="background-image: linear-gradient(grey, grey), url(./assets/img/ariel-view.jpg); background-repeat: no-repeat;
+    <div class="main-panel" style="background-image: linear-gradient(grey, grey), url(./assets/img/ariel-view.jpg);
         background-size: 125%; background-blend-mode: multiply;">
         <div class="content">
             <div class="row">
@@ -44,6 +44,7 @@
                                             <th scope="col">Upload Date</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Price</th>
+                                            <th scope="col">Details</th>
                                             <th scope="col">File Path</th>
                                         </tr>
                                     </thead>
@@ -58,6 +59,9 @@
                                             <td>{{ record.upload_datetime }}</td>
                                             <td>{{ record.status }}</td>
                                             <td>{{ record.price }}</td>
+                                            <td>
+                                                <a href="javascript:void(0)" (click)="onViewDetails(modalData, record)">View Details</a>
+                                            </td>
                                             <td>
                                                 <a href="javascript:void(0)" (click)="onDownloadClick(record.file_path)">Click to view the file</a>
                                             </td>
@@ -118,3 +122,62 @@
         </div>
     </div>
 </div>
+
+
+<ng-template #modalData let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title text-center">Upload ID: {{ recordDetails.id }}</h5>
+        <p></p>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-danger" style="display: inline">Paper Type: </p>
+                <p style="display: inline">{{ recordDetails.paper_type }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-danger" style="display: inline">Colored: </p>
+                <p style="display: inline">{{recordDetails.colored == 1 ? "Colored" : "Black & White"}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-danger" style="display: inline">Binding: </p>
+                <p style="display: inline">{{ recordDetails.binding == 1 ? "Yes" : "No" }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-danger" style="display: inline">Paper Front / Back: </p>
+                <p style="display: inline">{{ recordDetails.paper_front_back == 0 ? "Front Only" : "Front & Back" }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-danger" style="display: inline">Cover Type: </p>
+                <p style="display: inline">{{ getCover(recordDetails.cover_type) }}</p>
+            </div>
+        </div>        
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-danger" style="display: inline">Remarks: </p>
+                <p style="display: inline">{{ recordDetails.remarks }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="left-side">
+            <button type="button" class="btn btn-success btn-link" (click)="modal.close('Close click')">Ok</button>
+        </div>
+        <div class="divider"></div>
+        <div class="right-side">
+            <button type="button" class="btn btn-danger btn-link" (click)="modal.close('Close click')">Close</button>
+        </div>
+    </div>
+</ng-template>

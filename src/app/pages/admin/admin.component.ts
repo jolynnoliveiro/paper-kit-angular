@@ -4,6 +4,7 @@ import { AdminService } from '../../services/admin.service';
 import { NgForm } from '@angular/forms';
 import { AccountService } from '../../services/account.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -24,8 +25,12 @@ export class AdminComponent implements OnInit {
   bookedOrdersColumns = ['booking_id', 'username', 'contact_number', 'start_time', 'end_time', 'booking_date'];
 
   users = [];
+  model1: string;
 
-  constructor(public adminService: AdminService, public snackBar: MatSnackBar, public accountService: AccountService) { 
+  recordDetails = {};
+
+  constructor(public adminService: AdminService, public snackBar: MatSnackBar, public accountService: AccountService,
+    public modalService: NgbModal) { 
     this.username = accountService.currentUser.username;
   }
 
@@ -164,5 +169,11 @@ export class AdminComponent implements OnInit {
     }
 
     return value;
+  }
+
+  onViewDetails(modalData: any, record: any) {
+    this.recordDetails = record;
+
+    this.modalService.open(modalData, {ariaLabelledBy: 'modal-basic-title'});
   }
 }
